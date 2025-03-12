@@ -7,6 +7,7 @@ import Main from '../content/Main';
 import Intro from './Intro';
 import ScrollUpCover from './cover/ScrollUpCover';
 import Timeline from './timeline/Timeline';
+import DdayCounter from "@/components/content/DdayCounter";
 
 type ContainerProps = {
   inviteCode?: string;
@@ -25,7 +26,7 @@ const requestInvitationData = async (inviteCode: string | undefined) => {
     return jsonData;
   } catch (error) {
     console.warn(error);
-    return notFound(); 
+    return notFound();
   }
 };
 
@@ -38,6 +39,8 @@ const renderContent = (data: any[]): React.ReactNode => {
       return <Main data={ item } />;
     case 'timeline':
       return <Timeline data={ item } />;
+    case 'ddaycounter':
+      return <DdayCounter data={ item.content } />;
     default:
       return null;
     }

@@ -9,6 +9,7 @@ import AttendanceConfirmation from './AttendanceConfirmation';
 import Intro from './Intro';
 import ScrollWrapper from './ScrollWrapper';
 import ScrollUpCover from './cover/ScrollUpCover';
+import GuestBook from './guestbook/GuestBook';
 import ImageGrid from './image/ImageGrid';
 import RouteMap from './map/RouteMap';
 import Timeline from './timeline/Timeline';
@@ -102,6 +103,7 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
         <ImageGrid images={ imageGridData } />
         <AttendanceConfirmation inviteCode={ inviteCode } />
         <RouteMap data={ routeMapData } />
+        <GuestBook inviteCode={ inviteCode } />
       </ScrollWrapper>
     </React.Fragment>
   );

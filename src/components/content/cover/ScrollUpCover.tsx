@@ -1,7 +1,6 @@
 'use client';
 
 import { usePageEntryStore } from '@/stores/pageEntry';
-import { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const coverWrapperClass = twMerge(
@@ -39,7 +38,7 @@ export default function ScrollUpCover({ data }: { data: CoverData }) {
         />
       </figure>
 
-      <div className="text-gray-500 text-lg mb-20 px-5">
+      <div className="text-gray-500 mb-20 px-5">
         <p className="text-center">{ data.coverTitle }</p>
         <p className="text-center text-lg">{ data.coverDate }</p>
         <p className="text-center">{ data.coverLocation }</p>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { usePageEntryStore } from '../../../stores/pageEntry';
-import TypingText from '../../text/TypingText';
+import TypingText from '../../fragments/text/TypingText';
 
 const coverWrapperClass = twMerge(
   'flex flex-col items-center justify-between w-full h-full max-w-md min-w-sm',

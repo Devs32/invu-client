@@ -8,6 +8,7 @@ import Main from '../content/Main';
 import AttendanceConfirmation from './AttendanceConfirmation';
 import Intro from './Intro';
 import ScrollWrapper from './ScrollWrapper';
+import CalendarWrapper from './calendar/CalendarWrapper';
 import ScrollUpCover from './cover/ScrollUpCover';
 import ImageGrid from './image/ImageGrid';
 import RouteMap from './map/RouteMap';
@@ -94,12 +95,21 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
     }
   };
 
+  const calendarData = {
+    title: '안내',
+    content: {
+      title: '안내',
+      date: '2025-03-31T12:00:00'
+    }
+  };
+
   return (
     <React.Fragment key={ `${ inviteCode }-${ Math.floor(Math.random() * 10000) }` }>
       <ScrollUpCover data={ coverData.content } />
       <ScrollWrapper>
         { renderContent(invitationData) }
         <ImageGrid images={ imageGridData } />
+        <CalendarWrapper data={ calendarData.content } />
         <AttendanceConfirmation inviteCode={ inviteCode } />
         <RouteMap data={ routeMapData } />
       </ScrollWrapper>

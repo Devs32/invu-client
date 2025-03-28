@@ -39,7 +39,7 @@ export default function TimelineItem({ data, reverse }: TimelineItemProps) {
             </>
           ) : (
             <>
-              <TimelineText date={ item.date } text={ item.text } />
+              <TimelineText date={ item.date } text={ item.text } alignment="right"/>
               <TimelineConnector dotColor="#FCA5A5" />
               <TimelineImage imgPath={ item.imgPath || '' } />
             </>

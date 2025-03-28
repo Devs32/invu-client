@@ -95,7 +95,7 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
     }
   };
 
-  const calendarData = {
+  const calendarData = invitationData.find((item: any) => item.type === 'calendar') || {
     title: '안내',
     content: {
       title: '안내',

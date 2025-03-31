@@ -1,6 +1,6 @@
 import Wrapper from '@/components/content/Wrapper';
 import TitleText from '@/components/text/TitleText';
-import GuestBookManager from './GuestBookManager';
+import GuestBookManager from './fragments/GuestBookManager';
 
 type GuestBookProps = {
   inviteCode: string;

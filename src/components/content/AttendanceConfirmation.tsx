@@ -1,5 +1,6 @@
 'use client';
 
+import { useToastStore } from '@/stores/toast';
 import { useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { request } from '../../utils/http';
@@ -9,6 +10,7 @@ import DateText from '../text/DateText';
 import InputText from '../text/InputText';
 import TitleText from '../text/TitleText';
 import Wrapper from './Wrapper';
+
 const modalWrapperClass = twMerge(
   'my-10',
   'z-50',
@@ -29,6 +31,7 @@ type HandleSubmitProps = {
 };
 
 export default function AttendanceConfirmation({ inviteCode }: AttendanceConfirmationProps) {
+  const { addToast } = useToastStore();
   const [ isModalOpen, setIsModalOpen ] = useState(false);
 
   const [ name, setName ] = useState('');
@@ -46,12 +49,12 @@ export default function AttendanceConfirmation({ inviteCode }: AttendanceConfirm
 
   const validateInputs = (): boolean => {
     if (!name.trim()) {
-      alert('성함을 입력해 주세요.');
+      addToast('성함을 입력해 주세요.');
       nameRef.current?.focus();
       return false;
     }
     if (!meal) {
-      alert('식사 여부를 선택해 주세요.');
+      addToast('식사 여부를 선택해 주세요.');
       return false;
     }
     return true;

@@ -21,6 +21,7 @@ const buttonClass = twMerge(
 
 export default function ListEntriesButton({ inviteCode }: ListEntriesButtonProps) {
   const [ isOpen, setIsOpen ] = useState(false);
+
   return (
     <>
       <button type="button" className={ buttonClass } onClick={ () => setIsOpen(true) }>

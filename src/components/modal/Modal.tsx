@@ -24,13 +24,15 @@ const modalWrapperClass = twMerge(
   'fixed inset-0 flex flex-col justify-center items-center m-auto',
   'max-w-md',
   'opacity-100',
-  'bg-white',
+  'bg-gray-100',
   'z-50 invisible',
   'transition-all duration-300 ease'
 );
 
 const modalHeaderClass = twMerge(
   'flex justify-between items-center',
+  'absolute top-0 left-0',
+  'z-50',
   'w-full h-16',
   'p-4'
 );
@@ -72,7 +74,7 @@ export default function Modal({ title, children, isOpen, animationType = undefin
 
   return (
     <div ref={ modalOverlayRef } className={ twMerge(modalOverlayClass, isOpen && 'visible') } onClick={ e => e.target === modalOverlayRef.current && onClose() } >
-      <div className={ twMerge(modalWrapperClass, animationTypeClass, isOpen && 'visible', width, height) }>
+      <div className={ twMerge(modalWrapperClass, animationTypeClass, isOpen && 'visible', width, height, (width !== 'w-full' || height !== 'h-full') ? 'rounded-lg' : '') }>
         <div className={ modalHeaderClass }>
           <h2 className="text-2xl font-bold">{ title }</h2>
           <button onClick={ onClose }>

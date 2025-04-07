@@ -9,7 +9,8 @@ const toastWrapperClass = twMerge(
 );
 
 const toastClass = twMerge(
-  'rounded-full px-6 py-3 bg-gray-900/50 text-white',
+  'rounded-full px-6 py-3 bg-black/70 text-white',
+  'text-nowrap',
   'shadow-lg cursor-pointer',
   'transition-all duration-300',
   'translate-y-full opacity-0',

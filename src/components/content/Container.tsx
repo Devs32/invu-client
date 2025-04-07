@@ -6,6 +6,7 @@ import { request } from '@/utils/http';
 import DdayCounter from '@/components/content/DdayCounter';
 import Main from '../content/Main';
 import AttendanceConfirmation from './AttendanceConfirmation';
+import Footer from './Footer';
 import Intro from './Intro';
 import ScrollWrapper from './ScrollWrapper';
 import ScrollUpCover from './cover/ScrollUpCover';
@@ -57,16 +58,7 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
 
   await new Promise(resolve => setTimeout(resolve, 500));
 
-  const coverData = invitationData.find((item: any) => item.type === 'cover') || {
-    page: 0,
-    type: 'cover',
-    content: {
-      coverImage: '/images/vertical-image-01.jpeg',
-      coverTitle: 'ㅇㅇㅇ',
-      coverDate: '2025. 03. 10 | 오후 10:00',
-      coverLocation: '장소'
-    }
-  };
+  const coverData = invitationData.find((item: any) => item.type === 'cover');
 
   const imageGridData = [
     '/images/vertical-image-01.jpeg',
@@ -104,6 +96,7 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
         <AttendanceConfirmation inviteCode={ inviteCode } />
         <RouteMap data={ routeMapData } />
         <GuestBook inviteCode={ inviteCode } />
+        <Footer inviteCode={ inviteCode } />
       </ScrollWrapper>
     </React.Fragment>
   );

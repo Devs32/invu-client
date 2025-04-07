@@ -12,7 +12,7 @@ type CreateEntryButtonProps = {
 
 const buttonClass = twMerge(
   'border border-gray-400',
-  'text-gray-400',
+  'text-gray-400 text-sm',
   'px-5 my-5',
   'rounded-full',
   'flex items-center gap-2',

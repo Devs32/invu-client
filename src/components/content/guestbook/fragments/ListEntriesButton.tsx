@@ -4,6 +4,7 @@ import Modal from '@/components/modal/Modal';
 import { ListBulletIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import GuestBookList from './GuestBookList';
 
 type ListEntriesButtonProps = {
   inviteCode: string;
@@ -11,8 +12,8 @@ type ListEntriesButtonProps = {
 
 const buttonClass = twMerge(
   'border border-gray-400',
-  'text-gray-400',
-  'px-5 my-5',
+  'text-gray-400 text-sm',
+  'px-5 py-1 my-5',
   'rounded-full',
   'flex items-center gap-2',
   'transition-all duration-300',
@@ -28,8 +29,8 @@ export default function ListEntriesButton({ inviteCode }: ListEntriesButtonProps
         <ListBulletIcon className="w-4 h-4" /> 전체보기
       </button>
       <Modal isOpen={ isOpen } onClose={ () => setIsOpen(false) }>
-        <div>
-          <h2>방명록 목록</h2>
+        <div className="w-full h-full pt-5 overflow-y-auto">
+          <GuestBookList inviteCode={ inviteCode } />
         </div>
       </Modal>
     </>

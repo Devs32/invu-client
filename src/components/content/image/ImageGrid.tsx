@@ -5,13 +5,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { twMerge } from 'tailwind-merge';
 
-import Modal from '@/components/modal/Modal';
+import Modal from '@/components/fragments/modal/Modal';
 import { intersectionAnimation, intersectionAnimationOptions } from '@/utils/constants/intersectionAnimation';
 import { useIntersectionObserver } from '@/utils/customHook';
 import Slider from 'react-slick';
 
 import Wrapper from '@/components/content/Wrapper';
 import './imageGrid.css';
+
 type ImageGridProps = {
   images: string[];
 };

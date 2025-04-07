@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 import Wrapper from '@/components/content/Wrapper';
 import TimelineItem from '@/components/content/timeline/TimelineItem';
-import TitleText from '@/components/text/TitleText';
+import TitleText from '@/components/fragments/text/TitleText';
 
 const timelineWrapperClass = twMerge(
   'py-6'

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { RefObject, useState } from 'react';
 
 type InputTextProps = {
   id: string;
@@ -9,16 +9,17 @@ type InputTextProps = {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  ref?: RefObject<HTMLInputElement>;
 };
 
-export default function InputText({ id, type = 'text', label, value, onChange, placeholder = '' }: InputTextProps) {
+export default function InputText({ id, type = 'text', label, value, onChange, placeholder = '', ref }: InputTextProps) {
   const [ inputValue, setInputValue ] = useState(value);
 
   return (
     <div className="flex w-full">
       <label className="w-[90px]" htmlFor={ id }>{ label }</label>
       <input
-        className="w-full outline-none border-b border-black px-2 mx-2"
+        className="w-full outline-none border-b border-black px-2 mx-2 bg-transparent"
         placeholder={ placeholder }
         autoComplete="off"
         id={ id }
@@ -26,6 +27,7 @@ export default function InputText({ id, type = 'text', label, value, onChange, p
         value={ inputValue }
         onChange={ (e) => setInputValue(e.target.value) }
         onBlur={ () => onChange(inputValue) }
+        ref={ ref }
       />
     </div>
   );

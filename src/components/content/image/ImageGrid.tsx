@@ -12,6 +12,7 @@ import Slider from 'react-slick';
 
 import Wrapper from '@/components/content/Wrapper';
 import './imageGrid.css';
+
 type ImageGridProps = {
   images: string[];
 };

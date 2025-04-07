@@ -1,7 +1,8 @@
 import Wrapper from '@/components/content/Wrapper';
-import TitleText from '@/components/text/TitleText';
+import TitleText from '@/components/fragments/text/TitleText';
 import GuestBookList from './fragments/GuestBookList';
 import GuestBookManager from './fragments/GuestBookManager';
+
 type GuestBookProps = {
   inviteCode: string;
 };

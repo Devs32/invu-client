@@ -1,6 +1,6 @@
 'use client';
 
-import Modal from '@/components/modal/Modal';
+import Modal from '@/components/fragments/modal/Modal';
 import { ListBulletIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';

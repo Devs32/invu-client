@@ -1,6 +1,6 @@
 'use client';
 
-import Modal from '@/components/modal/Modal';
+import Modal from '@/components/fragments/modal/Modal';
 import { request } from '@/utils/http';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import { useRef, useState } from 'react';

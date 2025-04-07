@@ -1,6 +1,6 @@
 'use client';
 
-import Modal from '@/components/modal/Modal';
+import Modal from '@/components/fragments/modal/Modal';
 import { request } from '@/utils/http';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';

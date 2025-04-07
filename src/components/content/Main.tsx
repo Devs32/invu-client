@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 
 import Wrapper from '@/components/content/Wrapper';
-import TitleText from '@/components/text/TitleText';
+import TitleText from '@/components/fragments/text/TitleText';
 
 const mainWrapperClass = twMerge(
   'pt-16',

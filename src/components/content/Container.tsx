@@ -9,6 +9,7 @@ import AttendanceConfirmation from './AttendanceConfirmation';
 import Footer from './Footer';
 import Intro from './Intro';
 import ScrollWrapper from './ScrollWrapper';
+import CalendarWrapper from './calendar/CalendarWrapper';
 import ScrollUpCover from './cover/ScrollUpCover';
 import GuestBook from './guestbook/GuestBook';
 import ImageGrid from './image/ImageGrid';
@@ -87,12 +88,21 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
     }
   };
 
+  const calendarData = invitationData.find((item: any) => item.type === 'calendar') || {
+    title: '안내',
+    content: {
+      title: '안내',
+      date: '2025-03-31T12:00:00'
+    }
+  };
+
   return (
     <React.Fragment key={ `${ inviteCode }-${ Math.floor(Math.random() * 10000) }` }>
       <ScrollUpCover data={ coverData.content } />
       <ScrollWrapper>
         { renderContent(invitationData) }
         <ImageGrid images={ imageGridData } />
+        <CalendarWrapper data={ calendarData.content } />
         <AttendanceConfirmation inviteCode={ inviteCode } />
         <RouteMap data={ routeMapData } />
         <GuestBook inviteCode={ inviteCode } />

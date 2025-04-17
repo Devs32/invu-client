@@ -1,6 +1,6 @@
 'use client';
 
-import CreateEntryButton from './CreateEntryButton';
+import CreateGuestBookButton from './CreateGuestBookButton';
 import ListEntriesButton from './ListEntriesButton';
 
 type GuestBookManagerProps = {
@@ -9,7 +9,7 @@ type GuestBookManagerProps = {
 export default function GuestBookManager({ inviteCode }: GuestBookManagerProps) {
   return (
     <div className="flex gap-10">
-      <CreateEntryButton inviteCode={ inviteCode } />
+      <CreateGuestBookButton inviteCode={ inviteCode } />
       <ListEntriesButton inviteCode={ inviteCode } />
     </div>
   );

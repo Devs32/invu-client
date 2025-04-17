@@ -4,6 +4,7 @@ import Modal from '@/components/fragments/modal/Modal';
 import { request } from '@/utils/http';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import GuestBookForm from './GuestBookForm';
 import GuestBookListItem from './GuestBookListItem';
 
 type GuestBookListProps = {
@@ -14,6 +15,10 @@ type GuestBookListProps = {
 type SelectedItem = {
   id: number | null;
   type: 'edit' | 'delete' | null;
+  initialValues?: {
+    guestName?: string;
+    message?: string;
+  };
 };
 
 const listClass = twMerge(
@@ -23,10 +28,11 @@ const listClass = twMerge(
 );
 
 export default function GuestBookList({ inviteCode, limit }: GuestBookListProps) {
+  const [ isOpen, setIsOpen ] = useState(false);
+
   const [ listData, setListData ] = useState<any[]>([]);
-  const [ isModalOpen, setIsModalOpen ] = useState(false);
   const [ selectedItem, setSelectedItem ] = useState<SelectedItem>({ id: null, type: null });
-  
+
   const requestGuestBookListData = async (inviteCode: string) => {
     try {
       const api = `/api/v1/invitation/${ inviteCode }/guestBooks`;
@@ -41,9 +47,18 @@ export default function GuestBookList({ inviteCode, limit }: GuestBookListProps)
       return [];
     }
   };
+
+  const getGuestBookItem = (itemId: number | null) => {
+    return listData.find((item) => item.id === itemId);
+  };
+
   const onClickItem = (itemId: number | null, type: 'edit' | 'delete' | null) => {
-    setSelectedItem({ id: itemId, type });
-    setIsModalOpen(true);
+    setSelectedItem({ id: itemId, type, initialValues: getGuestBookItem(itemId) });
+    setIsOpen(true);
+  };
+
+  const getModalHeight = (type: 'edit' | 'delete' | null) => {
+    return type === 'delete' ? 'h-[200px]' : 'h-[400px]';
   };
 
   useEffect(() => {
@@ -57,13 +72,19 @@ export default function GuestBookList({ inviteCode, limit }: GuestBookListProps)
           <GuestBookListItem key={ item.id } item={ item } onClick={ onClickItem } />
         ))
       }
-      <Modal
-        isOpen={ isModalOpen }
-        onClose={ () => setIsModalOpen(false) }
+      <Modal 
+        isOpen={ isOpen } 
+        onClose={ () => setIsOpen(false) } 
+        width="w-[300px]" 
+        height={ getModalHeight(selectedItem.type) }
       >
-        <div>
-          <h2>Modal</h2>
-        </div>
+        <GuestBookForm
+          type={ selectedItem.type }
+          inviteCode={ inviteCode }
+          initialValues={ selectedItem.initialValues }
+          isOpen={ isOpen }
+          onClose={ () => setIsOpen(false) }
+        />
       </Modal>
     </div>
   );

@@ -17,7 +17,7 @@ type ModalProps = {
 const modalOverlayClass = twMerge(
   'fixed inset-0 bg-[rgba(0,0,0,0.75)]',
   'z-40 invisible',
-  'transition-all duration-300 ease'
+  'transition-opacity duration-300 ease'
 );
 
 const modalWrapperClass = twMerge(
@@ -25,8 +25,7 @@ const modalWrapperClass = twMerge(
   'max-w-md',
   'opacity-100',
   'bg-gray-100',
-  'z-50 invisible',
-  'transition-all duration-300 ease'
+  'z-50 invisible'
 );
 
 const modalHeaderClass = twMerge(
@@ -45,18 +44,21 @@ const modalBodyClass = twMerge(
 
 const getAnimationType = (type: undefined | 'fade' | 'slide' | 'scale', isOpen: boolean) => {
   let animationClass = '';
+  let transitionClass = '';
 
   if (type === 'slide') {
     animationClass = isOpen ? 'translate-y-[0%]' : 'translate-y-[-100%]';
+    transitionClass = 'transition-transform duration-300 ease';
   }
 
   if (type === 'scale') {
     animationClass = isOpen ? 'scale-100' : 'scale-95';
+    transitionClass = 'transition-transform duration-300 ease';
   }
 
   const opacityClass = type ? (isOpen ? 'opacity-100' : 'opacity-0') : '';
 
-  return `${ animationClass } ${ opacityClass }`;
+  return `${ animationClass } ${ opacityClass } ${ transitionClass }`;
 };
 
 export default function Modal({ title, children, isOpen, animationType = undefined, onClose, width = 'w-full', height = 'h-full' }: ModalProps): JSX.Element {

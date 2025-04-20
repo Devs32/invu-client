@@ -1,8 +1,8 @@
 name: MAIN - Deploy
 
 on:
-  push:
-    branches: [ "main" ] # 테스트후 변경 에정
+  release:
+      types: [created]
 
 permissions:
   contents: read
@@ -75,12 +75,12 @@ jobs:
           project: devs32/invu
           stage: main
           yaml: |
-            name: invu-client
+            name: invu-client-release
             app: next.js
             options:
               nodeversion: "20"
               install: npm install
-              build: npm run build:test
+              build: npm run build
               healthz: /
               env: []
               buildenv: []
@@ -89,3 +89,6 @@ jobs:
                 url: git@github.com:${{ github.repository }}.git
                 ref: ${{ github.ref }}
               preset: next.js
+            resources:
+                spot: false
+                cpu: 0.5

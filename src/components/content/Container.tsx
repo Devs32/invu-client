@@ -74,7 +74,7 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
     title: '오시는 길',
     content: {
       mapTitle: '오시는 길',
-      location: '경기 용인시 처인구 양지면 주북로235번길 78, 78-1',
+      location: '경기 용인시 처인구 양지면 주북로235번길 78',
       routeDescription: [
         {
           title: '자가용 이용시',

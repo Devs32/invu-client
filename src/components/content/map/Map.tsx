@@ -25,7 +25,6 @@ export default function Map({ location }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log('지도 검색 location:', location);
     const initializeMap = async () => {
       try {
         // 카카오맵 스크립트 로드
@@ -35,15 +34,13 @@ export default function Map({ location }: MapProps) {
 
         // 주소를 좌표로 변환
         geocoder.addressSearch(location, (result: any, status: string) => {
-          console.log('지도 검색 AAAAAA:', result, status);
           if (status === window.kakao.maps.services.Status.OK && result[0]) {
-            console.log('지도 검색 BBBBBB:', location);
             const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
 
             // 맵 객체 생성
             const map = new window.kakao.maps.Map(mapRef.current, {
               center: coords,
-              level: 3,
+              level: 4,
             });
 
             // 마커 추가

@@ -11,10 +11,10 @@ declare global {
 }
 
 const mapWrapperClass = twMerge(
-    'flex items-center justify-center',
-    'w-full',
-    'h-[300px]',
-    'bg-gray-200'
+  'flex items-center justify-center',
+  'w-full',
+  'h-[300px]',
+  'bg-gray-200'
 );
 
 type MapProps = {
@@ -40,13 +40,13 @@ export default function Map({ location }: MapProps) {
             // 맵 객체 생성
             const map = new window.kakao.maps.Map(mapRef.current, {
               center: coords,
-              level: 4,
+              level: 4
             });
 
             // 마커 추가
             new window.kakao.maps.Marker({
               map,
-              position: coords,
+              position: coords
             });
           } else {
             console.error('주소 검색 실패:', status);
@@ -58,7 +58,7 @@ export default function Map({ location }: MapProps) {
     };
 
     initializeMap();
-  }, [location]);
+  }, [ location ]);
 
-  return <div ref={mapRef} className={mapWrapperClass}></div>;
+  return <div ref={ mapRef } className={ mapWrapperClass }></div>;
 }

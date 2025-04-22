@@ -13,7 +13,7 @@ export default {
         foreground: 'var(--foreground)'
       },
       minWidth: {
-        'sm': '384px'
+        'sm': '375px'
       }
     }
   },

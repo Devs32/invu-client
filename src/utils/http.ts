@@ -216,7 +216,6 @@ export const request = async (url: string, options: RequestType = {}): Promise<R
 
   finalOptions = checkServer() ? await getServerOptions(finalOptions) : getClientOptions(finalOptions);
 
-  console.log('fullUrl', fullUrl);
   const res = await fetch(fullUrl, { ...finalOptions });
 
   if (!res.ok) {

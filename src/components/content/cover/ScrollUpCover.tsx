@@ -4,7 +4,7 @@ import { usePageEntryStore } from '@/stores/pageEntry';
 import { twMerge } from 'tailwind-merge';
 
 const coverWrapperClass = twMerge(
-  'flex flex-col items-center w-full h-[110vh] max-w-md min-w-sm',
+  'flex flex-col items-center w-full h-[110vh] max-w-sm min-w-sm',
   'bg-gray-50',
   'z-50',
   'fixed top-0',

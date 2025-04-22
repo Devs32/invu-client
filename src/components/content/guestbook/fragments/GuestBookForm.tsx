@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const inputClass = twMerge(
-  'flex-1 p-2 border border-gray-300 rounded h-10',
+  'flex-1 p-2 border border-gray-300 rounded h-10 w-full',
   'focus:outline-none focus:ring-2 focus:ring-blue-500'
 );
 

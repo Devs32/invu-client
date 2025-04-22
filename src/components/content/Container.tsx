@@ -37,7 +37,7 @@ const requestInvitationData = async (inviteCode: string) => {
   }
 };
 
-const renderContent = (data: any[]): React.ReactNode => {
+const renderContent = (data: any[], inviteCode: string): React.ReactNode => {
   return data?.map((item: any) => {
     switch (item.type) {
     case 'intro':
@@ -48,6 +48,12 @@ const renderContent = (data: any[]): React.ReactNode => {
       return <Timeline data={ item } />;
     case 'ddaycounter':
       return <DdayCounter data={ item.content } />;
+    case 'imageGrid':
+      return <ImageGrid data={ item.content } />;
+    case 'calendar':
+      return <CalendarWrapper data={ item.content } />;
+    case 'attendance':
+      return <AttendanceConfirmation inviteCode={ inviteCode } data={ item.content } />;
     default:
       return null;
     }
@@ -60,15 +66,6 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
   await new Promise(resolve => setTimeout(resolve, 500));
 
   const coverData = invitationData.find((item: any) => item.type === 'cover');
-
-  const imageGridData = [
-    '/images/vertical-image-01.jpeg',
-    '/images/horizontal-image-01.jpg',
-    '/images/vertical-image-01.jpeg',
-    '/images/vertical-image-01.jpeg',
-    '/images/vertical-image-01.jpeg',
-    '/images/vertical-image-01.jpeg'
-  ];
 
   const routeMapData = {
     title: '오시는 길',
@@ -88,22 +85,11 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
     }
   };
 
-  const calendarData = invitationData.find((item: any) => item.type === 'calendar') || {
-    title: '안내',
-    content: {
-      title: '안내',
-      date: '2025-03-31T12:00:00'
-    }
-  };
-
   return (
     <React.Fragment key={ `${ inviteCode }-${ Math.floor(Math.random() * 10000) }` }>
       <ScrollUpCover data={ coverData.content } />
       <ScrollWrapper>
-        { renderContent(invitationData) }
-        <ImageGrid images={ imageGridData } />
-        <CalendarWrapper data={ calendarData.content } />
-        <AttendanceConfirmation inviteCode={ inviteCode } />
+        { renderContent(invitationData, inviteCode) }
         <RouteMap data={ routeMapData } />
         <GuestBook inviteCode={ inviteCode } />
         <Footer inviteCode={ inviteCode } />

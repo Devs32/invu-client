@@ -19,6 +19,11 @@ const modalWrapperClass = twMerge(
 
 type AttendanceConfirmationProps = {
   inviteCode: string;
+  data?: {
+    title: string;
+    text: string;
+    date: string;
+  };
 };
 
 type HandleSubmitProps = {
@@ -30,7 +35,13 @@ type HandleSubmitProps = {
   setIsModalOpen: (isModalOpen: boolean) => void;
 };
 
-export default function AttendanceConfirmation({ inviteCode }: AttendanceConfirmationProps) {
+const dummayData = {
+  title: '참석의사 전달하기',
+  text: '축하의 마음으로 참석해 주시는\n모든 분들을 귀하게 모실 수 있도록\n참석 의사를 전달 부탁드립니다.',
+  date: '2025-05-31'
+};
+
+export default function AttendanceConfirmation({ inviteCode, data = dummayData }: AttendanceConfirmationProps) {
   const { addToast } = useToastStore();
   const [ isModalOpen, setIsModalOpen ] = useState(false);
 
@@ -40,12 +51,6 @@ export default function AttendanceConfirmation({ inviteCode }: AttendanceConfirm
   const [ meal, setMeal ] = useState('');
 
   const nameRef = useRef<HTMLInputElement>(null);
-
-  const data = {
-    title: '참석의사 전달하기',
-    text: '축하의 마음으로 참석해 주시는\n모든 분들을 귀하게 모실 수 있도록\n참석 의사를 전달 부탁드립니다.',
-    date: '2025-05-31'
-  };
 
   const validateInputs = (): boolean => {
     if (!name.trim()) {
@@ -82,7 +87,7 @@ export default function AttendanceConfirmation({ inviteCode }: AttendanceConfirm
       alert('참석 의사 전달에 실패했습니다.');
     }
   };
-
+  
   return (
     <Wrapper className={ modalWrapperClass }>
       <TitleText className="text-lg" text={ data.title } />

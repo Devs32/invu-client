@@ -72,13 +72,13 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
       let apiUrl = '';
       switch (type) {
       case 'create':
-        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBook`;
+        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBooks`;
         break;
       case 'edit':
-        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBook/${ initialValues?.id }`;
+        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBooks/${ initialValues?.id }`;
         break;
       case 'delete':
-        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBook/delete/${ initialValues?.id }`;
+        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBooks/delete/${ initialValues?.id }`;
         break;
       }
 

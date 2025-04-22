@@ -11,10 +11,14 @@ import { useIntersectionObserver } from '@/utils/customHook';
 import Slider from 'react-slick';
 
 import Wrapper from '@/components/content/Wrapper';
+import TitleText from '@/components/fragments/text/TitleText';
 import './imageGrid.css';
 
 type ImageGridProps = {
-  images: string[];
+  data: {
+    images?: string[];
+    title?: string;
+  };
 };
 
 const imageGridWrapperClass = twMerge(
@@ -27,7 +31,7 @@ const imageGridItemClass = twMerge(
   'cursor-pointer'
 );
 
-export default function ImageGrid({ images }: ImageGridProps) {
+export default function ImageGrid({ data }: ImageGridProps) {
   const [ selectedImageIndex, setSelectedImageIndex ] = useState<number | null>(null);
   const imageGridRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<Slider>(null);
@@ -49,21 +53,25 @@ export default function ImageGrid({ images }: ImageGridProps) {
 
   return (
     <React.Fragment>
-      <Wrapper ref={ imageGridRef } className={ imageGridWrapperClass }>
-        {
-          images.map((src, index) => (
-            <div key={ index } className="flex items-center justify-center w-full h-auto">
-              <img
-                src={ src }
-                alt={ `Image ${ index }` }
-                className={ imageGridItemClass }
-                draggable="false"
-                onClick={ handleImageClick.bind(null, index) }
-              />
-            </div>
-          ))
-        }
-      </Wrapper>
+      <div className="flex flex-col items-center w-full">
+        <TitleText text={ data.title } />
+        <Wrapper ref={ imageGridRef } className={ imageGridWrapperClass }>
+          {
+            data.images?.map((src, index) => (
+              <div key={ index } className="flex items-center justify-center w-full h-auto">
+                <img
+                  src={ src }
+                  alt={ `Image ${ index }` }
+                  className={ imageGridItemClass }
+                  draggable="false"
+                  onClick={ handleImageClick.bind(null, index) }
+                />
+              </div>
+            ))
+          }
+        </Wrapper>
+
+      </div>
 
       <Modal isOpen={ selectedImageIndex !== null } onClose={ handleCloseModal }>
         <Slider
@@ -76,7 +84,7 @@ export default function ImageGrid({ images }: ImageGridProps) {
           slidesToScroll={ 1 }
         >
           {
-            images.map((src, index) => (
+            data.images?.map((src, index) => (
               <div key={ index }>
                 <img src={ src } alt={ `Image ${ index }` } />
               </div>

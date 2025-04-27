@@ -48,6 +48,10 @@ export default function GuestBookList({ inviteCode, limit }: GuestBookListProps)
     }
   };
 
+  const refreshListData = async () => {
+    await requestGuestBookListData(inviteCode);
+  };
+
   const getGuestBookItem = (itemId: number | null) => {
     return listData.find((item) => item.id === itemId);
   };
@@ -84,6 +88,7 @@ export default function GuestBookList({ inviteCode, limit }: GuestBookListProps)
           initialValues={ selectedItem.initialValues }
           isOpen={ isOpen }
           onClose={ () => setIsOpen(false) }
+          onSuccess={ refreshListData }
         />
       </Modal>
     </div>

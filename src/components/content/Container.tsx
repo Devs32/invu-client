@@ -73,14 +73,6 @@ export default async function Container({ inviteCode = '' }: ContainerProps) {
       mapTitle: '오시는 길',
       location: '경기 용인시 처인구 양지면 주북로235번길 78',
       routeDescription: [
-        {
-          title: '자가용 이용시',
-          description: '자가용 이용시의 경로'
-        },
-        {
-          title: '대중교통 이용시',
-          description: '대중교통 이용시의 경로'
-        }
       ]
     }
   };

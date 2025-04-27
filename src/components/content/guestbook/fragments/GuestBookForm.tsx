@@ -27,9 +27,10 @@ interface GuestBookFormProps {
   };
   isOpen: boolean;
   onClose: () => void;
+  onSuccess: () => void;
 }
 
-export default function GuestBookForm({ type, inviteCode, initialValues, isOpen, onClose }: GuestBookFormProps) {
+export default function GuestBookForm({ type, inviteCode, initialValues, isOpen, onClose, onSuccess }: GuestBookFormProps) {
   const { addToast } = useToastStore();
 
   const [ guestName, setGuestName ] = useState(initialValues?.guestName || '');
@@ -92,6 +93,7 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
 
       if (response.ok) {
         addToast(`${ type === 'create' ? '작성' : type === 'edit' ? '수정' : '삭제' }하기 완료`);
+        onSuccess();
       } else {
         addToast(`${ type === 'create' ? '작성' : type === 'edit' ? '수정' : '삭제' }하기 실패`);
       }

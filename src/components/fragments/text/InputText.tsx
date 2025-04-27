@@ -10,9 +10,10 @@ type InputTextProps = {
   onChange: (value: string) => void;
   placeholder?: string;
   ref?: RefObject<HTMLInputElement>;
+  min?: number;
 };
 
-export default function InputText({ id, type = 'text', label, value, onChange, placeholder = '', ref }: InputTextProps) {
+export default function InputText({ id, type = 'text', label, value, onChange, placeholder = '', ref, min }: InputTextProps) {
   const [ inputValue, setInputValue ] = useState(value);
 
   return (
@@ -28,6 +29,7 @@ export default function InputText({ id, type = 'text', label, value, onChange, p
         onChange={ (e) => setInputValue(e.target.value) }
         onBlur={ () => onChange(inputValue) }
         ref={ ref }
+        min={ min }
       />
     </div>
   );

@@ -18,6 +18,7 @@ import Timeline from './timeline/Timeline';
 
 type ContainerProps = {
   inviteCode?: string;
+  initialData?: any;
 };
 
 const requestInvitationData = async (inviteCode: string) => {

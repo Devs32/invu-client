@@ -1,4 +1,5 @@
 import Container from '@/components/content/Container';
+import { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { twMerge } from 'tailwind-merge';
 
@@ -20,6 +21,12 @@ const invtePageClass = twMerge(
 type InvitePageProps = {
   params: Promise<{ inviteCode: string }>;
 };
+
+export async function generateMetadata({ params }: { params: { inviteCode: string } }): Promise<Metadata> {
+  return {
+    title: '해니의 생일 초대장'
+  };
+}
 
 export default async function InvitePage({ params }: InvitePageProps) {
   const inviteCode = (await params).inviteCode; // 초대 코드

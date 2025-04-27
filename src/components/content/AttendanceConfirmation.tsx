@@ -105,7 +105,7 @@ export default function AttendanceConfirmation({ inviteCode, data = dummayData }
           <DateText dateString={ data.date } />
           <div className="flex flex-col w-full px-10 py-10 gap-y-5">
             <InputText id="name" type="text" label="성함" value={ name } placeholder="성함을 입력해주세요." onChange={ setName } ref={ nameRef as React.RefObject<HTMLInputElement> } />
-            <InputText id="companionCount" type="number" label="동반인원" value={ companionCount } onChange={ setCompanionCount } />
+            <InputText id="companionCount" type="number" label="동반인원" value={ companionCount } min={ 0 } onChange={ setCompanionCount } />
             <InputText id="companionName" type="text" label="동행인" value={ companionName } placeholder="동행인 성함을 입력해 주세요." onChange={ setCompanionName } />
             <RadioSelector id="meal" label="식사여부" options={ [ { label: '예정', value: 'YES' }, { label: '안함', value: 'NO' }, { label: '미정', value: 'UNDECIDED' } ] } onChange={ setMeal } />
           </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useToastStore } from '@/stores/toast';
-import { request } from '@/utils/http';
+import { guestBookActions } from '@/utils/action/guestBookActions';
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -70,28 +70,20 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
 
   const handleSubmitForm = async (values: { guestName: string; password: string; message: string }) => {
     try {
-      let apiUrl = '';
+      let response = null;
       switch (type) {
       case 'create':
-        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBooks`;
+        response = await guestBookActions.createGuestBook(inviteCode, values);
         break;
       case 'edit':
-        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBooks/${ initialValues?.id }`;
+        response = await guestBookActions.updateGuestBook(inviteCode, initialValues?.id, values);
         break;
       case 'delete':
-        apiUrl = `/api/v1/invitation/${ inviteCode }/guestBooks/delete/${ initialValues?.id }`;
+        response = await guestBookActions.deleteGuestBook(inviteCode, initialValues?.id, values.password);
         break;
       }
 
-      const response = await request(apiUrl, {
-        method: 'POST',
-        body: {
-          ...values,
-          invuId: inviteCode
-        }
-      });
-
-      if (response.ok) {
+      if (response?.ok) {
         addToast(`${ type === 'create' ? '작성' : type === 'edit' ? '수정' : '삭제' }하기 완료`);
         onSuccess();
       } else {
@@ -106,6 +98,7 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
   };
 
   const handleSubmit = () => {
+    console.log('handleSubmit');
     if (validate()) {
       handleSubmitForm({ guestName, password, message });
     }

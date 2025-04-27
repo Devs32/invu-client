@@ -1,7 +1,8 @@
 'use client';
 
 import Modal from '@/components/fragments/modal/Modal';
-import { request } from '@/utils/http';
+import { guestBookActions } from '@/utils/action/guestBookActions';
+import { guestBookEmitter } from '@/utils/eventEmitter';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import GuestBookForm from './GuestBookForm';
@@ -10,6 +11,7 @@ import GuestBookListItem from './GuestBookListItem';
 type GuestBookListProps = {
   inviteCode: string;
   limit?: number;
+  isEmit?: boolean;
 };
 
 type SelectedItem = {
@@ -27,7 +29,7 @@ const listClass = twMerge(
   'bg-gray-100'
 );
 
-export default function GuestBookList({ inviteCode, limit }: GuestBookListProps) {
+export default function GuestBookList({ inviteCode, limit, isEmit = false }: GuestBookListProps) {
   const [ isOpen, setIsOpen ] = useState(false);
 
   const [ listData, setListData ] = useState<any[]>([]);
@@ -35,11 +37,8 @@ export default function GuestBookList({ inviteCode, limit }: GuestBookListProps)
 
   const requestGuestBookListData = async (inviteCode: string) => {
     try {
-      const api = `/api/v1/invitation/${ inviteCode }/guestBooks`;
-      const res = await request(api);
-      const data = await res.json();
-
-      const limitData = limit ? data.data.slice(0, limit) : data.data;
+      const res = await guestBookActions.getGuestBooks(inviteCode);
+      const limitData = limit ? res.slice(0, limit) : res;
 
       setListData(limitData);
     } catch (error) {
@@ -67,7 +66,17 @@ export default function GuestBookList({ inviteCode, limit }: GuestBookListProps)
 
   useEffect(() => {
     requestGuestBookListData(inviteCode);
-  }, [ ]);
+
+    if (isEmit) {
+      guestBookEmitter.on('refreshListData', refreshListData);
+    }
+
+    return () => {
+      if (isEmit) {
+        guestBookEmitter.off('refreshListData', refreshListData);
+      }
+    };
+  }, []);
 
   return (
     <div className={ listClass }>

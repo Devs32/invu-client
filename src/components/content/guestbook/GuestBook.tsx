@@ -11,7 +11,7 @@ export default function GuestBook({ inviteCode }: GuestBookProps) {
   return (
     <Wrapper>
       <TitleText text="방명록" />
-      <GuestBookList inviteCode={ inviteCode } limit={ 3 } />
+      <GuestBookList inviteCode={ inviteCode } limit={ 3 } isEmit={ true } />
       <GuestBookManager inviteCode={ inviteCode } />
     </Wrapper>
   );

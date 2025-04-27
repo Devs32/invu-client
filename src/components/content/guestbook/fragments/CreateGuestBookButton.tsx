@@ -1,11 +1,11 @@
 'use client';
 
 import Modal from '@/components/fragments/modal/Modal';
+import { guestBookEmitter } from '@/utils/eventEmitter';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import GuestBookForm from './GuestBookForm';
-
 type CreateGuestBookButtonProps = {
   inviteCode: string;
 };
@@ -38,6 +38,7 @@ export default function CreateGuestBookButton({ inviteCode }: CreateGuestBookBut
           inviteCode={ inviteCode }
           isOpen={ isOpen }
           onClose={ toggleModal }
+          onSuccess={ () => guestBookEmitter.emit('refreshListData') }
         />
       </Modal>
     </>

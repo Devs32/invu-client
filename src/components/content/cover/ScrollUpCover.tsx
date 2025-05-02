@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 
 const coverWrapperClass = twMerge(
   'flex flex-col items-center w-full h-[110vh] max-w-md min-w-sm',
-  'bg-[#f7f6ee]',
+  'bg-gray-50',
   'z-50',
   'fixed top-0',
   'transition duration-500',

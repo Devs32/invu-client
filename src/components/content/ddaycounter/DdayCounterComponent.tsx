@@ -115,7 +115,7 @@ export default function DdayCounterComponent({
             {
               bottomMessage.split(/(\d+)/).map((part, index) =>
                 /\d+/.test(part) ? (
-                  <span key={ index } className="text-red-400 font-bold">{ part }</span>
+                  <span key={ index } className="text-[#FCA5A5] font-bold">{ part }</span>
                 ) : (
                   part
                 )

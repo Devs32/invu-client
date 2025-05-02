@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 
 const titleTextWrapperClass = twMerge(
-  'text-xl font-bold my-5'
+  'text-xl text-[#FCA5A5] my-5'
 );
 
 type TitleTextProps = {

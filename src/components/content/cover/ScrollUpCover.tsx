@@ -8,7 +8,7 @@ const coverWrapperClass = twMerge(
   'bg-gray-50',
   'z-50',
   'fixed top-0',
-  'transition duration-500',
+  'transition duration-300',
   'ease',
   'whitespace-pre-line'
 );
@@ -39,9 +39,9 @@ export default function ScrollUpCover({ data }: { data: CoverData }) {
       </figure>
 
       <div className="text-gray-500 mb-20 px-5">
-        <p className="text-center text-lg">{data.coverTitle}</p>
+        <p className="text-center text-lg text-[#FCA5A5]">{data.coverTitle}</p>
         <p className="text-center text-lg">{data.coverDate}</p>
-        <p className="text-center">{data.coverLocation}</p>
+        <p className="text-center text-lg">{data.coverLocation}</p>
       </div>
     </div>
   );

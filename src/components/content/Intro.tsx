@@ -11,7 +11,7 @@ type IntroProps = {
 export default function Intro({ type }: IntroProps) {
   return (
     <div className={ introWrapperClass }>
-      <h1 className="text-4xl font-bold"></h1>
+      <h1 className="text-4xl font-bold "></h1>
     </div>
   );
 }

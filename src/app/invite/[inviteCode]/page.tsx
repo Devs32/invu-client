@@ -4,10 +4,10 @@ import localFont from 'next/font/local';
 import { twMerge } from 'tailwind-merge';
 // import d from '@/_fonts'
 
-const gowunDodum = localFont({
-  src: '../../../../public/fonts/GowunDodum-Regular.woff',
-  display: 'swap'
-});
+// const gowunDodum = localFont({
+//   src: '../../../../public/fonts/GowunDodum-Regular.woff',
+//   display: 'swap'
+// });
 
 const koPubWorld = localFont({
   src: '../../../../public/fonts/KoPubWorld Batang Light.woff2',

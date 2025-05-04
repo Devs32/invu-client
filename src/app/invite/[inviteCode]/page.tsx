@@ -10,7 +10,7 @@ const gowunDodum = localFont({
 });
 
 const koPubWorld = localFont({
-  src: '../../../../public/fonts/KoPubWorld Batang Light.woff',
+  src: '../../../../public/fonts/KoPubWorld Batang Light.woff2',
   display: 'swap'
 });
 

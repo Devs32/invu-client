@@ -82,7 +82,11 @@ jobs:
               install: npm install
               build: npm run build:test
               healthz: /
-              env: []
+              env:
+                - name: NEXT_PUBLIC_KAKAO_API_KEY
+                  value: ${{ secrets.KAKAO_API_KEY }}
+                - name: NEXT_PUBLIC_TMAP_API_KEY
+                  value: ${{ secrets.TMAP_API_KEY }}
               buildenv: []
             context:
               git:

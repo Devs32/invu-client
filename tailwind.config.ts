@@ -14,6 +14,9 @@ export default {
       },
       minWidth: {
         'sm': '375px'
+      },
+      fontFamily: {
+        sans: [ 'KoPubWorld Batang', 'sans-serif' ]
       }
     }
   },

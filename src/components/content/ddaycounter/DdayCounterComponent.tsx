@@ -29,13 +29,13 @@ const replaceTemplateVariables = (text: string, timeLeft: TimeLeft) => {
   return parts.map((part, index) => {
     switch(part) {
     case 'days':
-      return <span key={ index } className="text-orange-400 font-bold">{timeLeft.days}</span>;
+      return <span key={ index } className="text-[#FCA5A5] font-bold">{timeLeft.days}</span>;
     case 'hours':
-      return <span key={ index } className="text-orange-400 font-bold">{padNumber(timeLeft.hours)}</span>;
+      return <span key={ index } className="text-[#FCA5A5] font-bold">{padNumber(timeLeft.hours)}</span>;
     case 'minutes':
-      return <span key={ index } className="text-orange-400 font-bold">{padNumber(timeLeft.minutes)}</span>;
+      return <span key={ index } className="text-[#FCA5A5] font-bold">{padNumber(timeLeft.minutes)}</span>;
     case 'seconds':
-      return <span key={ index } className="text-orange-400 font-bold">{padNumber(timeLeft.seconds)}</span>;
+      return <span key={ index } className="text-[#FCA5A5] font-bold">{padNumber(timeLeft.seconds)}</span>;
     default:
       return part;
     }
@@ -115,7 +115,7 @@ export default function DdayCounterComponent({
             {
               bottomMessage.split(/(\d+)/).map((part, index) =>
                 /\d+/.test(part) ? (
-                  <span key={ index } className="text-red-400 font-bold">{ part }</span>
+                  <span key={ index } className="text-[#FCA5A5] font-bold">{ part }</span>
                 ) : (
                   part
                 )

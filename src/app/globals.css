@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --background: #f4f4f4;
+  --background: #f5f5f5;
   --foreground: #171717;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'GowunDodum', Arial, Helvetica, sans-serif;
+  font-family: 'KoPubWorld Batang', Arial, Helvetica, sans-serif;
   line-height: 2;
 }
 
 body > div {
-  background: #f7f6ee;
+  background: #fff;
 }
 
 body::-webkit-scrollbar {
@@ -26,4 +26,11 @@ body::-webkit-scrollbar {
   font-family: 'GowunDodum';
   font-display: swap;
   src: url('/fonts/GowunDodum-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'KoPubWorld Batang';
+  src: url('/fonts/KoPubWorld Batang Light.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
 }

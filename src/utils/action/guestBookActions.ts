@@ -21,7 +21,6 @@ export const guestBookActions = {
       method: 'POST',
       body: {
         ...data,
-        invuId: inviteCode
       }
     });
   },
@@ -32,7 +31,6 @@ export const guestBookActions = {
       method: 'POST',
       body: {
         ...data,
-        invuId: inviteCode
       }
     });
   },

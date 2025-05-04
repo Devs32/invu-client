@@ -20,7 +20,7 @@ export const guestBookActions = {
     return await request(`/api/v1/invitation/${ inviteCode }/guestBooks`, {
       method: 'POST',
       body: {
-        ...data,
+        ...data
       }
     });
   },
@@ -30,7 +30,7 @@ export const guestBookActions = {
     return await request(`/api/v1/invitation/${ inviteCode }/guestBooks/${ guestBookId }`, {
       method: 'POST',
       body: {
-        ...data,
+        ...data
       }
     });
   },

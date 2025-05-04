@@ -10,7 +10,7 @@ type TmapLinkProps = {
 export default function TmapLink({ 
   location, 
   coordinates, 
-  text = '티맵으로 길찾기' 
+  text = '티맵'
 }: TmapLinkProps) {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [showWarning, setShowWarning] = useState<boolean>(false);

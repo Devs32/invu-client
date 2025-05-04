@@ -1,4 +1,4 @@
-// components/content/map/MapLinkContiner.tsx
+// components/content/map/MapLinkContainer.tsx
 import NaverMapLink from './NaverMapLink';
 import KakaoMapLink from './KakaoMapLink';
 import TmapLink from './TmapLink';

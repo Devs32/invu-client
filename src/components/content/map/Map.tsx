@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { loadKakaoMapScript } from '@/utils/kakao/loadKakaoMap';
-import MapLinkContiner from './MapLinkContiner';
+import MapLinkContainer from './MapLinkContainer';
 
 declare global {
   interface Window {
@@ -142,7 +142,7 @@ export default function Map({
       <div ref={ mapRef } className={ mapWrapperClass }></div>
 
       {/* 텍스트 속성을 전달하는 컨테이너 컴포넌트 */}
-      <MapLinkContiner
+      <MapLinkContainer
         location={ location }
         coordinates={ coordinates }
         placeName={ placeName }

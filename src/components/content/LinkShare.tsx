@@ -33,7 +33,7 @@ export default function LinkShare({ inviteCode }: { inviteCode: string }) {
     shareKakao({
       title: '초대장 도착했습니다',
       description: '해니의 생일에 초대합니다',
-      imageUrl: 'YOUR_IMAGE_URL', // 공유할 이미지 URL
+      imageUrl: 'https://pub-68537adb098842dca26d13cffdcd289e.r2.dev/CHE_0058.jpg', // 공유할 이미지 URL
       buttonTitle: '초대장 보기'
     }).catch(error => {
       console.error('카카오 공유하기 실패:', error);

@@ -1,7 +1,7 @@
-import { twMerge } from 'tailwind-merge';
-
 import Wrapper from '@/components/content/Wrapper';
 import TitleText from '@/components/fragments/text/TitleText';
+import Image from 'next/image';
+import { twMerge } from 'tailwind-merge';
 
 const mainWrapperClass = twMerge(
   'pt-16',
@@ -19,7 +19,7 @@ export default function Main({ data }: MainProps) {
       {
         data.imgPath && (
           <figure className="w-full relative h-[250px] top-0 my-3">
-            <img src={ data.imgPath } alt="mainImage" className="object-contain w-full h-full" />
+            <Image src={ data.imgPath } alt="mainImage" className="object-contain w-full h-full" fill unoptimized />
           </figure>
         )
       }

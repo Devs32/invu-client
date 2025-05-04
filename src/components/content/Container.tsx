@@ -55,6 +55,8 @@ const renderContent = (data: any[], inviteCode: string): React.ReactNode => {
       return <CalendarWrapper data={ item.content } />;
     case 'attendance':
       return <AttendanceConfirmation inviteCode={ inviteCode } data={ item.content } />;
+    case 'map':
+      return <RouteMap data={ item.content } />;
     default:
       return null;
     }
@@ -64,26 +66,15 @@ const renderContent = (data: any[], inviteCode: string): React.ReactNode => {
 export default async function Container({ inviteCode = '' }: ContainerProps) {
   const invitationData = await requestInvitationData(inviteCode);
 
-  await new Promise(resolve => setTimeout(resolve, 500));
+  // await new Promise(resolve => setTimeout(resolve, 500));
 
   const coverData = invitationData.find((item: any) => item.type === 'cover');
-
-  const routeMapData = {
-    title: '오시는 길',
-    content: {
-      mapTitle: '오시는 길',
-      location: '경기 용인시 처인구 양지면 주북로235번길 78',
-      routeDescription: [
-      ]
-    }
-  };
 
   return (
     <React.Fragment key={ `${ inviteCode }-${ Math.floor(Math.random() * 10000) }` }>
       <ScrollUpCover data={ coverData.content } />
       <ScrollWrapper>
         { renderContent(invitationData, inviteCode) }
-        <RouteMap data={ routeMapData } />
         <GuestBook inviteCode={ inviteCode } />
         <Footer inviteCode={ inviteCode } />
       </ScrollWrapper>

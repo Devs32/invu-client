@@ -4,6 +4,7 @@ import { useRef } from 'react';
 
 import { intersectionAnimation, intersectionAnimationOptions } from '@/utils/constants/intersectionAnimation';
 import { useIntersectionObserver } from '@/utils/customHook';
+import Image from 'next/image';
 
 type TimelineImageProps = {
   imgPath: string;
@@ -16,7 +17,7 @@ export default function TimelineImage({ imgPath }: TimelineImageProps) {
 
   return (
     <figure ref={ ref } className="relative h-[140px] w-[140px]">
-      <img src={ imgPath } alt="Timeline Image" className="absolute w-full h-full object-cover object-center" />
+      <Image src={ imgPath } alt="Timeline Image" className="absolute w-full h-full object-cover object-center" fill unoptimized />
     </figure>
   ); 
 }

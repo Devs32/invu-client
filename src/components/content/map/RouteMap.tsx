@@ -17,14 +17,11 @@ const routeMapDescriptionWrapperClass = twMerge(
 type RouteMapProps = {
   data: {
     title: string;
-    content: {
-      mapTitle: string;
-      location: string;
-      routeDescription: {
-        title: string;
-        description: string;
-      }[];
-    }
+    location: string;
+    routeDescription: {
+      title: string;
+      description: string;
+    }[];
   }
 };
 
@@ -32,20 +29,20 @@ export default function RouteMap({ data }: RouteMapProps) {
   return (
     <Wrapper className={ routeMapWrapperClass }>
       <TitleText text={ data.title } />
-      <Map location={ data.content.location } />
+      <Map location={ data.location } />
       <div className={ routeMapDescriptionWrapperClass }>
         <div>
           <div>주소</div>
-          <div>{ data.content.location }</div>
+          <div>{ data.location }</div>
         </div>
-        {
+        {/* {
           data.content.routeDescription.map((routeDescription) => (
             <div key={ routeDescription.title }>
               <h3>{ routeDescription.title }</h3>
               <p>{ routeDescription.description }</p>
             </div>
           ))
-        }
+        } */}
       </div>
     </Wrapper>
   );

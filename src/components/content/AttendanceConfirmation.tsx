@@ -1,7 +1,7 @@
 'use client';
 
 import { useToastStore } from '@/stores/toast';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { request } from '../../utils/http';
 import Modal from '../fragments/modal/Modal';
@@ -84,13 +84,27 @@ export default function AttendanceConfirmation({ inviteCode, data = dummayData }
     });
 
     if (response.ok) {
-      alert('참석 의사가 전달되었습니다.');
+      addToast('참석 의사가 전달되었습니다.');
       setIsModalOpen(false);
     } else {
-      alert('참석 의사 전달에 실패했습니다.');
+      addToast('참석 의사 전달에 실패했습니다.');
     }
   };
-  
+
+  const resetInputs = () => {
+    setName('');
+    setCompanionCount('0');
+    setCompanionName('');
+    setChildCount('0');
+    setMeal('');
+  };
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      resetInputs();
+    }
+  }, [ isModalOpen ]);
+
   return (
     <Wrapper className={ modalWrapperClass }>
       <TitleText className="text-lg" text={ data.title } />
@@ -103,7 +117,7 @@ export default function AttendanceConfirmation({ inviteCode, data = dummayData }
       >
         참석 의사 전달하기
       </button>
-      <Modal animationType="scale" isOpen={ isModalOpen } onClose={ setIsModalOpen.bind(null, false) }>
+      <Modal animationType="scale" isOpen={ isModalOpen } onClose={ () => setIsModalOpen(false) }>
         <div className="flex flex-col items-center w-full h-full justify-center">
           <DateText dateString={ data.date } />
           <div className="flex flex-col w-full px-10 py-10 gap-y-5">
@@ -113,7 +127,7 @@ export default function AttendanceConfirmation({ inviteCode, data = dummayData }
             <InputText id="companionName" type="text" label="동행인" value={ companionName } placeholder="동행인 성함을 입력해 주세요." onChange={ setCompanionName } />
             <RadioSelector id="meal" label="식사여부" options={ [ { label: '예정', value: 'YES' }, { label: '안함', value: 'NO' }, { label: '미정', value: 'UNDECIDED' } ] } onChange={ setMeal } />
           </div>
-          <button onClick={ handleSubmit.bind(null, { inviteCode, name, companionCount, companionName, childCount, meal, setIsModalOpen }) } type="submit" className="border border-[#FCA5A5] text-[#FCA5A5] px-14 py-2 my-5 rounded-md transition-all duration-300 hover:bg-[#FCA5A5] hover:text-white">
+          <button onClick={ () => handleSubmit({ inviteCode, name, companionCount, companionName, childCount, meal, setIsModalOpen }) } type="submit" className="border border-[#FCA5A5] text-[#FCA5A5] px-14 py-2 my-5 rounded-md transition-all duration-300 hover:bg-[#FCA5A5] hover:text-white">
             전달하기
           </button>
         </div>

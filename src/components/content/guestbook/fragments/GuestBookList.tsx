@@ -85,10 +85,10 @@ export default function GuestBookList({ inviteCode, limit, isEmit = false }: Gue
           <GuestBookListItem key={ item.id } item={ item } onClick={ onClickItem } />
         ))
       }
-      <Modal 
-        isOpen={ isOpen } 
-        onClose={ () => setIsOpen(false) } 
-        width="w-[300px]" 
+      <Modal
+        isOpen={ isOpen }
+        onClose={ () => setIsOpen(false) }
+        width="w-[300px]"
         height={ getModalHeight(selectedItem.type) }
       >
         <GuestBookForm

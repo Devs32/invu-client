@@ -5,7 +5,6 @@ class EventEmitter {
   private debounceTimers: { [key: string]: NodeJS.Timeout } = {};
 
   on(event: string, callback: EventCallback) {
-    console.log('on', event, callback);
     if (!this.events[event]) {
       this.events[event] = [];
     }

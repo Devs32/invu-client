@@ -1,6 +1,7 @@
 'use client';
 
 import { usePageEntryStore } from '@/stores/pageEntry';
+import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 
 const coverWrapperClass = twMerge(
@@ -32,9 +33,11 @@ export default function ScrollUpCover({ data }: { data: CoverData }) {
       } }
     >
       <figure className="min-w-[80%] max-w-[80%] relative h-[60%] my-3 opacity-80 mt-20">
-        <img
+        <Image
           src={ data.coverImage }
           alt="coverImage"
+          fill
+          unoptimized
         />
       </figure>
 

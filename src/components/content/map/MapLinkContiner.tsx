@@ -23,20 +23,20 @@ export default function MapLinkContainer({
   return (
     <div className="w-full bg-[#f4f4f4] flex items-center justify-between py-2">
       <NaverMapLink 
-        location={location} 
-        text={naverText} 
+        location={ location } 
+        text={ naverText } 
       />
       <span className="text-gray-300 px-1">|</span>
       <KakaoMapLink 
-        location={location} 
-        coordinates={coordinates} 
-        text={kakaoText} 
+        location={ location } 
+        coordinates={ coordinates } 
+        text={ kakaoText } 
       />
       <span className="text-gray-300 px-1">|</span>
       <TmapLink 
-        coordinates={coordinates} 
-        placeName={placeName} 
-        text={tmapText} 
+        coordinates={ coordinates }
+        location={ location } 
+        text={ tmapText } 
       />
     </div>
   );

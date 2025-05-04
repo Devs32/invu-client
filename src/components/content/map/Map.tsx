@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { loadKakaoMapScript } from '@/utils/loadKakaoMap';
+import { loadKakaoMapScript } from '@/utils/kakao/loadKakaoMap';
 
 declare global {
   interface Window {

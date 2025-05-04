@@ -10,7 +10,7 @@ export const loadKakaoMapScript = () => {
 
     const script = document.createElement('script');
     script.id = 'kakao-map-script';
-    script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=728537f86168978028abe62c120e8b77&autoload=false&libraries=services';
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&autoload=false&libraries=services`;
     script.async = true;
     script.onload = () => {
       window.kakao.maps.load(() => {

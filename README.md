@@ -43,3 +43,6 @@ npm run test:build
 ```bash
 npm run start
 ```
+
+## 필요 환경변수 
+NEXT_PUBLIC_KAKAO_API_KEY= #카카오 API 키

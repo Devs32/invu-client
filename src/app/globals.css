@@ -30,7 +30,7 @@ body::-webkit-scrollbar {
 
 @font-face {
   font-family: 'KoPubWorld Batang';
-  src: url('/fonts/KoPubWorld Batang Light.ttf') format('truetype');
+  src: url('/fonts/KoPubWorld Batang Light.woff') format('truetype');
   font-weight: 500;
   font-style: normal;
 }

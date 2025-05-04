@@ -60,10 +60,10 @@ export default function AttendanceConfirmation({ inviteCode, data = dummayData }
       nameRef.current?.focus();
       return false;
     }
-    if (!meal) {
-      addToast('식사 여부를 선택해 주세요.');
-      return false;
-    }
+    // if (!meal) {
+    //   addToast('식사 여부를 선택해 주세요.');
+    //   return false;
+    // }
     return true;
   };
 
@@ -124,8 +124,8 @@ export default function AttendanceConfirmation({ inviteCode, data = dummayData }
             <InputText id="name" type="text" label="성함" value={ name } placeholder="성함을 입력해주세요." onChange={ setName } ref={ nameRef as React.RefObject<HTMLInputElement> } />
             <InputText id="companionCount" type="number" label="동반인원" value={ companionCount } min={ 0 } onChange={ setCompanionCount } />
             <InputText id="childCount" type="number" label="아동인원" value={ childCount } min={ 0 } onChange={ setChildCount } />
-            <InputText id="companionName" type="text" label="동행인" value={ companionName } placeholder="동행인 성함을 입력해 주세요." onChange={ setCompanionName } />
-            <RadioSelector id="meal" label="식사여부" options={ [ { label: '예정', value: 'YES' }, { label: '안함', value: 'NO' }, { label: '미정', value: 'UNDECIDED' } ] } onChange={ setMeal } />
+            {/*<InputText id="companionName" type="text" label="동행인" value={ companionName } placeholder="동행인 성함을 입력해 주세요." onChange={ setCompanionName } />*/}
+            {/*<RadioSelector id="meal" label="식사여부" options={ [ { label: '예정', value: 'YES' }, { label: '안함', value: 'NO' }, { label: '미정', value: 'UNDECIDED' } ] } onChange={ setMeal } />*/}
           </div>
           <button onClick={ () => handleSubmit({ inviteCode, name, companionCount, companionName, childCount, meal, setIsModalOpen }) } type="submit" className="border border-[#FCA5A5] text-[#FCA5A5] px-14 py-2 my-5 rounded-md transition-all duration-300 hover:bg-[#FCA5A5] hover:text-white">
             전달하기

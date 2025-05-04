@@ -4,12 +4,12 @@ import KakaoMapLink from './KakaoMapLink';
 import TmapLink from './TmapLink';
 
 type MapLinkContainerProps = {
-  location: string;
-  coordinates: { lat: number; lng: number } | null;
-  placeName: string;
-  naverText?: string;
-  kakaoText?: string;
-  tmapText?: string;
+    location: string;
+    coordinates: { lat: number; lng: number } | null;
+    placeName: string;
+    naverText?: string;
+    kakaoText?: string;
+    tmapText?: string;
 };
 
 export default function MapLinkContainer({
@@ -22,22 +22,28 @@ export default function MapLinkContainer({
 }: MapLinkContainerProps) {
   return (
     <div className="w-full bg-[#f4f4f4] flex items-center justify-between py-2">
-      <NaverMapLink 
-        location={ location } 
-        text={ naverText } 
-      />
+      <div className="flex-1 text-center">
+        <NaverMapLink
+          location={ location }
+          text={ naverText }
+        />
+      </div>
       <span className="text-gray-300 px-1">|</span>
-      <KakaoMapLink 
-        location={ location } 
-        coordinates={ coordinates } 
-        text={ kakaoText } 
-      />
+      <div className="flex-1 text-center">
+        <KakaoMapLink
+          location={ location }
+          coordinates={ coordinates }
+          text={ kakaoText }
+        />
+      </div>
       <span className="text-gray-300 px-1">|</span>
-      <TmapLink 
-        coordinates={ coordinates }
-        location={ location } 
-        text={ tmapText } 
-      />
+      <div className="flex-1 text-center">
+        <TmapLink
+          coordinates={ coordinates }
+          location={ location }
+          text={ tmapText }
+        />
+      </div>
     </div>
   );
 }

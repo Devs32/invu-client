@@ -13,8 +13,6 @@ export default function KakaoMapLink({
   const getKakaoMapUrl = () => {
     if (!coordinates) return '#';
 
-    // 모바일에서 더 잘 작동하는 URL 형식 사용
-    // kakaomap://route?ep={위도},{경도}&ename={장소명}
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       typeof navigator !== 'undefined' ? navigator.userAgent : ''
     );

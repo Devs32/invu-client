@@ -12,7 +12,7 @@ export default function KakaoMapLink({
 }: KakaoMapLinkProps) {
   const getKakaoMapUrl = () => {
     if (!coordinates) return '#';
-    return `https://map.kakao.com/link/map/${encodeURIComponent(location)},${coordinates.lat},${coordinates.lng}`;
+    return `https://map.kakao.com/link/to/${encodeURIComponent(location)},${coordinates.lat},${coordinates.lng}`;
   };
 
   return (

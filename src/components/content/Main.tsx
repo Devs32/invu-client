@@ -18,7 +18,7 @@ export default function Main({ data }: MainProps) {
       <TitleText text={ data.title } />
       {
         data.imgPath && (
-          <figure className="w-full relative h-[250px] top-0 my-3">
+          <figure className="w-full relative h-[300px] top-0 my-3">
             <Image src={ data.imgPath } alt="mainImage" className="object-contain w-full h-full" fill unoptimized />
           </figure>
         )

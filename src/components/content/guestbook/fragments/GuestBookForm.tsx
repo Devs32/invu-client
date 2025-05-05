@@ -36,6 +36,7 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
   const [ guestName, setGuestName ] = useState(initialValues?.guestName || '');
   const [ password, setPassword ] = useState('');
   const [ message, setMessage ] = useState(initialValues?.message || '');
+  const [ isSubmitting, setIsSubmitting ] = useState(false);
 
   const guestNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -54,7 +55,7 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
       guestNameRef.current?.focus();
       return false;
     }
-    
+
     if (!password.trim()) {
       passwordRef.current?.focus();
       return false;
@@ -70,6 +71,7 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
 
   const handleSubmitForm = async (values: { guestName: string; password: string; message: string }) => {
     try {
+      setIsSubmitting(true);
       let response = null;
       switch (type) {
       case 'create':
@@ -93,13 +95,14 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
       console.warn(error);
       addToast(`${ type === 'create' ? '작성' : type === 'edit' ? '수정' : '삭제' }하기 실패`);
     } finally {
+      setIsSubmitting(false);
       onClose();
     }
   };
 
   const handleSubmit = () => {
     console.log('handleSubmit');
-    if (validate()) {
+    if (!isSubmitting && validate()) {
       handleSubmitForm({ guestName, password, message });
     }
   };
@@ -109,6 +112,7 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
       setGuestName(type === 'create' ? '' : initialValues?.guestName || '');
       setPassword('');
       setMessage(type === 'create' ? '' : initialValues?.message || '');
+      setIsSubmitting(false);
     }, 1000);
   };
 
@@ -184,10 +188,21 @@ export default function GuestBookForm({ type, inviteCode, initialValues, isOpen,
       }
       <button
         type="button"
-        className="bg-blue-500 text-white p-2 rounded"
+        className={ twMerge(
+          'bg-blue-500 text-white p-2 rounded',
+          isSubmitting && 'opacity-70 cursor-not-allowed'
+        ) }
         onClick={ handleSubmit }
+        disabled={ isSubmitting }
       >
-        { type === 'create' ? '작성하기' : type === 'edit' ? '수정하기' : '삭제하기' }
+        { isSubmitting
+          ? '처리중...'
+          : type === 'create'
+            ? '작성하기'
+            : type === 'edit'
+              ? '수정하기'
+              : '삭제하기'
+        }
       </button>
     </div>
   );

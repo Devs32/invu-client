@@ -102,7 +102,7 @@ export default function AttendanceConfirmation({ inviteCode, data = dummayData }
 
   const resetInputs = () => {
     setName('');
-    setCompanionCount('0');
+    setCompanionCount('1');
     setCompanionName('');
     setChildCount('0');
     setMeal('');

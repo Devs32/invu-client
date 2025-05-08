@@ -22,15 +22,15 @@ body::-webkit-scrollbar {
   display: none; /* 웹킷 기반 브라우저에서 스크롤바 숨기기 */
 }
 
-@font-face {
-  font-family: 'GowunDodum';
-  font-display: swap;
-  src: url('/fonts/GowunDodum-Regular.woff') format('woff');
-}
+/*@font-face {*/
+/*  font-family: 'GowunDodum';*/
+/*  font-display: swap;*/
+/*  src: url('/fonts/GowunDodum-Regular.woff') format('woff');*/
+/*}*/
 
 @font-face {
   font-family: 'KoPubWorld Batang';
-  src: url('/fonts/KoPubWorld Batang Light.ttf') format('truetype');
+  src: url('/fonts/KoPubWorld Batang Light.woff2') format('truetype');
   font-weight: 500;
   font-style: normal;
 }

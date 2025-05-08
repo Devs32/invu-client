@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge';
 import GuestBookList from './GuestBookList';
 
 type ListEntriesButtonProps = {
-  inviteCode: string;
+    inviteCode: string;
 };
 
 const buttonClass = twMerge(
@@ -22,15 +22,21 @@ const buttonClass = twMerge(
 
 export default function ListEntriesButton({ inviteCode }: ListEntriesButtonProps) {
   const [ isOpen, setIsOpen ] = useState(false);
+  const [ refreshKey, setRefreshKey ] = useState(0);
+
+  const handleOpenModal = () => {
+    setRefreshKey(prev => prev + 1); // 모달 열릴 때마다 refreshKey 증가
+    setIsOpen(true);
+  };
 
   return (
     <>
-      <button type="button" className={ buttonClass } onClick={ () => setIsOpen(true) }>
+      <button type="button" className={ buttonClass } onClick={ handleOpenModal }>
         <ListBulletIcon className="w-4 h-4" /> 전체보기
       </button>
       <Modal isOpen={ isOpen } onClose={ () => setIsOpen(false) }>
         <div className="w-full h-full pt-5 overflow-y-auto">
-          <GuestBookList inviteCode={ inviteCode } />
+          <GuestBookList key={ refreshKey } inviteCode={ inviteCode } />
         </div>
       </Modal>
     </>

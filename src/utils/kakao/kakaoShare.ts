@@ -1,3 +1,4 @@
+// src/utils/kakao/kakaoShare.ts
 import { loadKakaoSDK } from './loadKakaoSDK';
 
 declare global {

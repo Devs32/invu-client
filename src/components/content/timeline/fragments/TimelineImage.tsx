@@ -17,7 +17,7 @@ export default function TimelineImage({ imgPath }: TimelineImageProps) {
 
   return (
     <figure ref={ ref } className="relative h-[140px] w-[140px]">
-      <Image src={ imgPath } alt="Timeline Image" className="absolute w-full h-full object-cover object-center" fill unoptimized />
+      <Image src={ imgPath } alt="Timeline Image" className="absolute w-full h-full object-cover object-center" fill quality={ 80 } />
     </figure>
   ); 
 }

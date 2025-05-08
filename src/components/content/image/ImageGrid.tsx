@@ -5,13 +5,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { twMerge } from 'tailwind-merge';
 
-import Modal from '@/components/fragments/modal/Modal';
 import { intersectionAnimation, intersectionAnimationOptions } from '@/utils/constants/intersectionAnimation';
 import { useIntersectionObserver } from '@/utils/customHook';
 import Slider from 'react-slick';
 
 import Wrapper from '@/components/content/Wrapper';
+import Modal from '@/components/fragments/modal/Modal';
 import TitleText from '@/components/fragments/text/TitleText';
+import Image from 'next/image';
 import './imageGrid.css';
 
 type ImageGridProps = {
@@ -22,7 +23,7 @@ type ImageGridProps = {
 };
 
 const imageGridWrapperClass = twMerge(
-  'grid grid-cols-3 gap-4 p-5'
+  'grid grid-cols-3 gap-4 p-5 w-full relative'
 );
 
 const imageGridItemClass = twMerge(
@@ -58,19 +59,20 @@ export default function ImageGrid({ data }: ImageGridProps) {
         <Wrapper ref={ imageGridRef } className={ imageGridWrapperClass }>
           {
             data.images?.map((src, index) => (
-              <div key={ index } className="flex items-center justify-center w-full h-auto">
-                <img
+              <div key={ index } className="relative flex items-center justify-center w-full h-full aspect-[3/4]">
+                <Image
                   src={ src }
                   alt={ `Image ${ index }` }
                   className={ imageGridItemClass }
                   draggable="false"
+                  fill
+                  quality={ 80 }
                   onClick={ handleImageClick.bind(null, index) }
                 />
               </div>
             ))
           }
         </Wrapper>
-
       </div>
 
       <Modal isOpen={ selectedImageIndex !== null } onClose={ handleCloseModal }>
@@ -85,8 +87,14 @@ export default function ImageGrid({ data }: ImageGridProps) {
         >
           {
             data.images?.map((src, index) => (
-              <div key={ index }>
-                <img src={ src } alt={ `Image ${ index }` } />
+              <div key={ index } className="relative aspect-[10/16] w-full">
+                <Image
+                  src={ src }
+                  alt={ `Image ${ index }` }
+                  className="object-cover"
+                  fill
+                  quality={ 80 }
+                />
               </div>
             ))
           }

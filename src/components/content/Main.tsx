@@ -19,7 +19,7 @@ export default function Main({ data }: MainProps) {
       {
         data.imgPath && (
           <figure className="w-full relative h-[300px] top-0 my-3">
-            <Image src={ data.imgPath } alt="mainImage" className="object-contain w-full h-full" fill unoptimized />
+            <Image src={ data.imgPath } alt="mainImage" className="object-contain w-full h-full" fill quality={ 80 } />
           </figure>
         )
       }
